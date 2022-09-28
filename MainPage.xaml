@@ -9,9 +9,9 @@
     xmlns:g="using:Microsoft.Toolkit.Uwp.Input.GazeInteraction"
     g:GazeInput.Interaction="Enabled"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <Canvas Width="1700" Height="825" Background="Transparent">
-        <CaptureElement Name="PreviewControl" Width="1700" Height="825" Canvas.Top="0" Canvas.Left="0" Canvas.ZIndex="0"/>
-        <Grid Canvas.Left="0" Canvas.Top="0" Canvas.ZIndex="1"  Width="1700" Height="825" Background="Transparent">
+    <Canvas Width="1700" Height="900" Background="Transparent">
+        <CaptureElement Name="PreviewControl" Width="1700" Height="900" Canvas.Top="0" Canvas.Left="0" Canvas.ZIndex="0"/>
+        <Grid Canvas.Left="0" Canvas.Top="0" Canvas.ZIndex="1"  Width="1700" Height="900" Background="Transparent">
 
             <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
@@ -32,33 +32,33 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Grid.Column="0" x:Name="msg_text_block" Text="test"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  FontSize="12"/>
-                <Button Grid.Row="1" Grid.Column="0" x:Name="front_camera_button" Content="Front Camera" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Camera_Click" g:GazeInput.MaxDwellRepeatCount="40" Margin="15" Background="Transparent" BorderBrush="Black" BorderThickness="4">
+                <Button Grid.Row="1" Grid.Column="0" x:Name="front_camera_button" Content="Front Camera" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Camera_Click" g:GazeInput.MaxDwellRepeatCount="40" Margin="5" Background="Transparent" BorderBrush="Black" BorderThickness="4">
                     <g:GazeInput.GazeElement>
                         <g:GazeElement Invoked="OnGazeInvoked"/>
                     </g:GazeInput.GazeElement>
                 </Button>
-                <Button Grid.Row="2" Grid.Column="0" x:Name="phone_button" Content="Phone" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="15" Background="Transparent" BorderBrush="Black" BorderThickness="4">
+                <Button Grid.Row="2" Grid.Column="0" x:Name="phone_button" Content="Phone" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="5" Background="Transparent" BorderBrush="Black" BorderThickness="4">
                         <g:GazeInput.GazeElement>
                             <g:GazeElement Invoked="OnGazeInvoked"/>
                         </g:GazeInput.GazeElement>
                     </Button>
-                <Button Grid.Row="3" Grid.Column="0" x:Name="computer_button" Content="Computer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="15" Background="Transparent" BorderBrush="Black" BorderThickness="4">
+                <Button Grid.Row="3" Grid.Column="0" x:Name="computer_button" Content="Computer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="5" Background="Transparent" BorderBrush="Black" BorderThickness="4">
                     <g:GazeInput.GazeElement>
                         <g:GazeElement Invoked="OnGazeInvoked"/>
                     </g:GazeInput.GazeElement>
                 </Button>
-                <Button Grid.Row="4" Grid.Column="0" x:Name="mode_button" Content="Mode" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="15" Background="Transparent" BorderBrush="Black" BorderThickness="4">
+                <Button Grid.Row="4" Grid.Column="0" x:Name="mode_button" Content="Mode" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="5" Background="Transparent" BorderBrush="Black" BorderThickness="4">
                     <g:GazeInput.GazeElement>
                         <g:GazeElement Invoked="OnGazeInvoked"/>
                     </g:GazeInput.GazeElement>
                 </Button>
                 
-                <Button Grid.Row="5" Grid.Column="0" x:Name="btnSerialConnect" Content="Connect" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="15" Background="Transparent" BorderBrush="Black" BorderThickness="4">
+                <Button Grid.Row="5" Grid.Column="0" x:Name="btnSerialConnect" Content="Connect" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="5" Background="Transparent" BorderBrush="Black" BorderThickness="4">
                         <g:GazeInput.GazeElement>
                             <g:GazeElement Invoked="OnGazeInvoked"/>
                         </g:GazeInput.GazeElement>
                     </Button>
-                <Button Grid.Row="6" Grid.Column="0" x:Name="btnSerialDisconnect" Content="Disconnect" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="15" Background="Transparent" BorderBrush="Black" BorderThickness="4">
+                <Button Grid.Row="6" Grid.Column="0" x:Name="btnSerialDisconnect" Content="Disconnect" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="5" Background="Transparent" BorderBrush="Black" BorderThickness="4">
                         <g:GazeInput.GazeElement>
                             <g:GazeElement Invoked="OnGazeInvoked"/>
                         </g:GazeInput.GazeElement>
@@ -88,72 +88,72 @@
                 </Grid.RowDefinitions>
 
 
-                <Button Grid.Row="0" Grid.Column="0" x:Name="LFF" Content="LFF" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="15" >
+                <Button Grid.Row="0" Grid.Column="0" x:Name="LFF" Content="LFF" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="5" >
                     <g:GazeInput.GazeElement>
                         <g:GazeElement Invoked="OnGazeInvoked"/>
                     </g:GazeInput.GazeElement>
                 </Button>
-                <Button Grid.Row="0" Grid.Column="1" x:Name="FF" Content="FF" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="15" >
+                <Button Grid.Row="0" Grid.Column="1" x:Name="FF" Content="FF" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="5" >
                     <g:GazeInput.GazeElement>
                         <g:GazeElement Invoked="OnGazeInvoked"/>
                     </g:GazeInput.GazeElement>
                 </Button>
-                <Button Grid.Row="0" Grid.Column="2" x:Name="RFF" Content="RFF" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="15" >
+                <Button Grid.Row="0" Grid.Column="2" x:Name="RFF" Content="RFF" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="5" >
                     <g:GazeInput.GazeElement>
                         <g:GazeElement Invoked="OnGazeInvoked"/>
                     </g:GazeInput.GazeElement>
                 </Button>
-                <Button Grid.Row="1" Grid.Column="0" x:Name="LF" Content="LF" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="15" >
+                <Button Grid.Row="1" Grid.Column="0" x:Name="LF" Content="LF" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="5" >
                     <g:GazeInput.GazeElement>
                         <g:GazeElement Invoked="OnGazeInvoked"/>
                     </g:GazeInput.GazeElement>
                 </Button>
-                <Button Grid.Row="1" Grid.Column="1" x:Name="F" Content="F" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="15" >
+                <Button Grid.Row="1" Grid.Column="1" x:Name="F" Content="F" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="5" >
                     <g:GazeInput.GazeElement>
                         <g:GazeElement Invoked="OnGazeInvoked"/>
                     </g:GazeInput.GazeElement>
                 </Button>
-                <Button Grid.Row="1" Grid.Column="2" x:Name="RF" Content="RF" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="15" >
+                <Button Grid.Row="1" Grid.Column="2" x:Name="RF" Content="RF" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="5" >
                     <g:GazeInput.GazeElement>
                         <g:GazeElement Invoked="OnGazeInvoked"/>
                     </g:GazeInput.GazeElement>
                 </Button>
-                <Button Grid.Row="2" Grid.Column="0" x:Name="L" Content="L" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="15" >
+                <Button Grid.Row="2" Grid.Column="0" x:Name="L" Content="L" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="5" >
                     <g:GazeInput.GazeElement>
                         <g:GazeElement Invoked="OnGazeInvoked"/>
                     </g:GazeInput.GazeElement>
                 </Button>
-                <Button Grid.Row="2" Grid.Column="2" x:Name="R" Content="R" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="15" >
+                <Button Grid.Row="2" Grid.Column="2" x:Name="R" Content="R" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="5" >
                     <g:GazeInput.GazeElement>
                         <g:GazeElement Invoked="OnGazeInvoked"/>
                     </g:GazeInput.GazeElement>
                 </Button>
-                <Button Grid.Row="3" Grid.Column="0" x:Name="LB" Content="LB" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="15" >
+                <Button Grid.Row="3" Grid.Column="0" x:Name="LB" Content="LB" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="5" >
                     <g:GazeInput.GazeElement>
                         <g:GazeElement Invoked="OnGazeInvoked"/>
                     </g:GazeInput.GazeElement>
                 </Button>
-                <Button Grid.Row="3" Grid.Column="1" x:Name="B" Content="B" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="15" >
+                <Button Grid.Row="3" Grid.Column="1" x:Name="B" Content="B" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="5" >
                     <g:GazeInput.GazeElement>
                         <g:GazeElement Invoked="OnGazeInvoked"/>
                     </g:GazeInput.GazeElement>
                 </Button>
-                <Button Grid.Row="3" Grid.Column="2" x:Name="RB" Content="RB" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="15" >
+                <Button Grid.Row="3" Grid.Column="2" x:Name="RB" Content="RB" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="5" >
                     <g:GazeInput.GazeElement>
                         <g:GazeElement Invoked="OnGazeInvoked"/>
                     </g:GazeInput.GazeElement>
                 </Button>
-                <Button Grid.Row="4" Grid.Column="0" x:Name="LBB" Content="LLBB" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="15" >
+                <Button Grid.Row="4" Grid.Column="0" x:Name="LBB" Content="LLBB" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="5" >
                     <g:GazeInput.GazeElement>
                         <g:GazeElement Invoked="OnGazeInvoked"/>
                     </g:GazeInput.GazeElement>
                 </Button>
-                <Button Grid.Row="4" Grid.Column="1" x:Name="BB" Content="BB" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="15" >
+                <Button Grid.Row="4" Grid.Column="1" x:Name="BB" Content="BB" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="5" >
                     <g:GazeInput.GazeElement>
                         <g:GazeElement Invoked="OnGazeInvoked"/>
                     </g:GazeInput.GazeElement>
                 </Button>
-                <Button Grid.Row="4" Grid.Column="2" x:Name="RBB" Content="RRBB" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="15" >
+                <Button Grid.Row="4" Grid.Column="2" x:Name="RBB" Content="RRBB" Background="Transparent" BorderBrush="Black" BorderThickness="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="OnLegacyInvoked" g:GazeInput.MaxDwellRepeatCount="40" Margin="5" >
                     <g:GazeInput.GazeElement>
                         <g:GazeElement Invoked="OnGazeInvoked"/>
                     </g:GazeInput.GazeElement>
