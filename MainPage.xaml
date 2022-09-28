@@ -9,9 +9,9 @@
     xmlns:g="using:Microsoft.Toolkit.Uwp.Input.GazeInteraction"
     g:GazeInput.Interaction="Enabled"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <Canvas Width="2000" Height="1100" Background="Transparent">
-        <CaptureElement Name="PreviewControl" Width="2000" Height="1100" Canvas.Top="0" Canvas.Left="0" Canvas.ZIndex="0"/>
-        <Grid Canvas.Left="0" Canvas.Top="0" Canvas.ZIndex="1"  Width="2000" Height="1100" Background="Transparent">
+    <Canvas Width="1700" Height="825" Background="Transparent">
+        <CaptureElement Name="PreviewControl" Width="1700" Height="825" Canvas.Top="0" Canvas.Left="0" Canvas.ZIndex="0"/>
+        <Grid Canvas.Left="0" Canvas.Top="0" Canvas.ZIndex="1"  Width="1700" Height="825" Background="Transparent">
 
             <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
