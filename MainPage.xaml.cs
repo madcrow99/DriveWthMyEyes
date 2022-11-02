@@ -15,6 +15,7 @@ using Windows.Devices.SerialCommunication;
 using Windows.Storage.Streams;
 using Microsoft.Toolkit.Uwp.Input.GazeInteraction;
 using Windows.UI.Xaml.Media;
+using Windows.UI;
 
 namespace DriveWthMyEyes
 {
@@ -52,8 +53,13 @@ namespace DriveWthMyEyes
         private String MODE = "e";
         private String phone = "f";
         private String computer = "g";
+        private String roblox = "h";
+        private String minecraft = "i";
 
         private Boolean phone_active = false;
+        private Boolean computer_active = false;
+        private Boolean camera_active = false;
+        private String computer_ctrl_type = "Computer";
 
 
         public MainPage()
@@ -68,9 +74,18 @@ namespace DriveWthMyEyes
         }
 
         //start of camera section
-        private void Camera_Click(object sender, RoutedEventArgs e)
+        private async void Camera_Click(object sender, RoutedEventArgs e)
         {
-            StartPreviewAsync();
+            if (!camera_active)
+            {
+                await StartPreviewAsync();
+                camera_active = true;
+            }
+            else if (camera_active)
+            {
+                await CleanupCameraAsync();
+                camera_active = false;
+            }
         }
             
         private async Task StartPreviewAsync()
@@ -187,8 +202,6 @@ namespace DriveWthMyEyes
 
         //START SERIAL COMMUNICATIO SECTION 
 
-        private int _clickCount;
-
         public Brush AliceBlue { get; private set; }
 
         private async void OnLegacyInvoked(object sender, RoutedEventArgs e)
@@ -222,7 +235,18 @@ namespace DriveWthMyEyes
                     if (serialPort != null)
                     {
                         dataWriteObject = new DataWriter(serialPort.OutputStream);
-                        await send_command(computer);
+                        switch(computer_ctrl_type){
+                            case "Roblox":
+                                await send_command(roblox);
+                                break;
+                            case "Minecraft":
+                                await send_command(minecraft);
+                                break;
+                            case "Computer":
+                                await send_command(computer);
+                                break;
+                        }
+                       // await send_command(computer);
 
                     }
                     if (dataWriteObject != null)
@@ -448,6 +472,7 @@ namespace DriveWthMyEyes
                         await send_command(phone);
                         e.Handled = true;
                         phone_active = !phone_active;
+                        computer_active = false;
                         controlLayout();
                     }
                     if (dataWriteObject != null)
@@ -460,8 +485,24 @@ namespace DriveWthMyEyes
                     if (serialPort != null)
                     {
                         dataWriteObject = new DataWriter(serialPort.OutputStream);
-                        await send_command(computer);
+                        switch (computer_ctrl_type)
+                        {
+                            case "Roblox":
+                                await send_command(roblox);
+                                break;
+                            case "Minecraft":
+                                await send_command(minecraft);
+                                break;
+                            case "Computer":
+                                await send_command(computer);
+                                break;
+                        }
+                        // await send_command(computer);
+
                         e.Handled = true;
+                        computer_active = !computer_active;
+                        phone_active = false;
+                        controlLayout();
                     }
                     if (dataWriteObject != null)
                     {
@@ -657,6 +698,7 @@ namespace DriveWthMyEyes
                         dataWriteObject = new DataWriter(serialPort.OutputStream);
                         await send_command(MODE);
                         e.Handled = true;
+
                     }
                     if (dataWriteObject != null)
                     {
@@ -685,7 +727,7 @@ namespace DriveWthMyEyes
             }
             catch (Exception ex)
             {
-                msg_text_block.Text = ex.Message;
+                //msg_text_block.Text = ex.Message;
             }
         }
         private async void SerialPortConfiguration()
@@ -696,7 +738,7 @@ namespace DriveWthMyEyes
                 var selection = lstSerialDevices.SelectedItems;
                 if (selection.Count <= 0)
                 {
-                    msg_text_block.Text = "select device";
+                   // msg_text_block.Text = "select device";
                     return;
                 }
                  entry = (DeviceInformation)selection[0];
@@ -705,7 +747,7 @@ namespace DriveWthMyEyes
             {
                 serialPort = await SerialDevice.FromIdAsync(entry.Id);
                 //serialPort = await SerialDevice.GetDeviceSelectorFromUsbVidPid(0x10C4, 0xEA60);
-                msg_text_block.Text = entry.Id;
+                //msg_text_block.Text = entry.Id;
                 
                 if (serialPort != null)
                 {
@@ -716,14 +758,14 @@ namespace DriveWthMyEyes
                     serialPort.StopBits = SerialStopBitCount.One;
                     serialPort.DataBits = 8;
                     serialPort.Handshake = SerialHandshake.None;
-                    msg_text_block.Text = "Serial port opened";
+                    //msg_text_block.Text = "Serial port opened";
                     ReadCancellationTokenSource = new CancellationTokenSource();
                     Listen();
                 }
             }
             catch (Exception ex)
             {
-                msg_text_block.Text = ex.Message;
+                //msg_text_block.Text = ex.Message;
                 phone_button.IsEnabled = false;
                 computer_button.IsEnabled = false;
             }
@@ -738,7 +780,7 @@ namespace DriveWthMyEyes
             }
             catch (Exception ex)
             {
-                msg_text_block.Text = ex.Message;
+                //msg_text_block.Text = ex.Message;
             }
         }
 
@@ -755,12 +797,12 @@ namespace DriveWthMyEyes
                 UInt32 bytesWritten = await storeAsyncTask;
                 if (bytesWritten > 0)
                 {
-                    msg_text_block.Text = "command sent";
+                   // msg_text_block.Text = "command sent";
                 }
             }
             else
             {
-                msg_text_block.Text = "nothing to send";
+               // msg_text_block.Text = "nothing to send";
             }
         }
 
@@ -779,14 +821,14 @@ namespace DriveWthMyEyes
             }
             catch (Exception ex)
             {
-                msg_text_block.Text = ex.Message;
+               // msg_text_block.Text = ex.Message;
                 if (ex.GetType().Name == "TaskCanceledException")
                 {
                     CloseDevice();
                 }
                 else
                 {
-                    msg_text_block.Text = "Task annullato";
+                    //msg_text_block.Text = "Task annullato";
                     CloseDevice();
                     SerialPortConfiguration();
                 }
@@ -811,7 +853,7 @@ namespace DriveWthMyEyes
             UInt32 bytesRead = await loadAsyncTask;
             if (bytesRead > 0)
             {
-                msg_text_block.Text = dataReaderObject.ReadString(bytesRead);
+               // msg_text_block.Text = dataReaderObject.ReadString(bytesRead);
             }
         }
 
@@ -838,8 +880,33 @@ namespace DriveWthMyEyes
            // listOfDevices.Clear();
         }
 
+        private void ColorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            computer_ctrl_type = e.AddedItems[0].ToString();
+            
+        }
         private void controlLayout()
         {
+            LFF.Content = "LFF";
+            FF.Content = "FF";
+            RFF.Content = "RFF";
+            LF.Content = "LF";
+            F.Content = "F";
+            RF.Content = "RF";
+            L.Content = "L";
+            R.Content = "R";
+            LB.Content = "LB";
+            B.Content = "B";
+            RB.Content = "RB";
+            LBB.Content = "LBB";
+            BB.Content = "BB";
+            RBB.Content = "RBB";
+            mode_button.Content = "Mode";
+            phone_button.FontStyle = Windows.UI.Text.FontStyle.Normal;
+            phone_button.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
+            computer_button.FontStyle = Windows.UI.Text.FontStyle.Normal;
+            computer_button.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
+
             if (phone_active)
             {
                 LFF.Content = "Scroll Down";
@@ -848,16 +915,60 @@ namespace DriveWthMyEyes
                 RBB.Content = "Right Click";
                 phone_button.FontStyle = Windows.UI.Text.FontStyle.Italic;
                 phone_button.Background = new SolidColorBrush(Windows.UI.Colors.Blue);
+                computer_button.FontStyle = Windows.UI.Text.FontStyle.Normal;
+                computer_button.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
             }
-            else
+            else if (computer_active)
             {
-                LFF.Content = "LFF";
-                RFF.Content = "RFF";
-                LBB.Content = "LBB";
-                RBB.Content = "RBB";
+                if (computer_ctrl_type == "Roblox")
+                {
+                    mode_button.Content = "Latch";
+                    LFF.Content = "Left";
+                    FF.Content = "FWD";
+                    RFF.Content = "Right";
+                    LF.Content = "LeftF";
+                    F.Content = "SlowF";
+                    RF.Content = "RightF";
+                    L.Content = "Turn L";
+                    R.Content = "Turn R";
+                    LB.Content = "Left";
+                    B.Content = "Jump";
+                    RB.Content = "Right";
+                    LBB.Content = "Scroll Down";
+                    BB.Content = "Back";
+                    RBB.Content = "Scroll Up";
+                }
+                else if (computer_ctrl_type == "Minecraft")
+                {
+                    mode_button.Content = "Latch";
+                    LFF.Content = "Left";
+                    FF.Content = "FWD";
+                    RFF.Content = "Right";
+                    LF.Content = "LeftF";
+                    F.Content = "SlowF";
+                    RF.Content = "RightF";
+                    L.Content = "Turn L";
+                    R.Content = "Turn R";
+                    LB.Content = "Left";
+                    B.Content = "Jump";
+                    RB.Content = "Right";
+                    LBB.Content = "Stack";
+                    BB.Content = "Back";
+                    RBB.Content = "Scroll Up";
+                }
+                else
+                {
+                    LFF.Content = "Scroll Down";
+                    RFF.Content = "Scroll Up";
+                    LBB.Content = "Left Click";
+                    RBB.Content = "Right Click";
+                }
+                computer_button.FontStyle = Windows.UI.Text.FontStyle.Italic;
+                computer_button.Background = new SolidColorBrush(Windows.UI.Colors.Green);
                 phone_button.FontStyle = Windows.UI.Text.FontStyle.Normal;
                 phone_button.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
             }
+            
         }
     }
 }
